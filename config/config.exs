@@ -35,6 +35,21 @@ config :phoenix, :json_library, Jason
 
 config :phoenix, :template_engines, md: PhoenixMarkdown.Engine
 
+config :ex_twilio,
+  account_sid: System.get_env("TWILIO_ACCOUNT_SID"),
+  auth_token: System.get_env("TWILIO_AUTH_TOKEN")
+  # optional
+  # workspace_sid: {:system, "TWILIO_WORKSPACE_SID"}
+
+config :personal_web, PersonalWeb.Endpoint,
+  live_reload: [
+    patterns: [
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{web/views/.*(ex)$},
+      ~r{web/templates/.*(eex|md)$}
+    ]
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

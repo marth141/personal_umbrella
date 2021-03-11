@@ -17,6 +17,12 @@ config :personal, Personal.Repo,
 # with webpack to recompile .js and .css sources.
 config :personal_web, PersonalWeb.Endpoint,
   http: [port: 4000],
+  https: [
+    port: 4001,
+    cipher_suite: :strong,
+    certfile: "priv/cert/selfsigned.pem",
+    keyfile: "priv/cert/selfsigned_key.pem"
+  ],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -74,12 +80,3 @@ config :phoenix, :plug_init_mode, :runtime
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
-
-config :personal_web, PersonalWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
-      ~r{web/views/.*(ex)$},
-      ~r{web/templates/.*(eex|md)$}
-    ]
-  ]

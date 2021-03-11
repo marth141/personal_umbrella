@@ -8,7 +8,7 @@ defmodule PersonalWeb.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {PersonalWeb.LayoutView, :root}
-    plug :protect_from_forgery
+    # plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
   end
@@ -75,5 +75,8 @@ defmodule PersonalWeb.Router do
     post "/users/confirm", UserConfirmationController, :create
     get "/users/confirm/:token", UserConfirmationController, :confirm
     resources "/about", AboutController, only: [:index]
+    get "/call", TwilioCallController, :show
+    get "/voice", TwilioReceiverController, :show
+    post "/voice", TwilioReceiverController, :voice
   end
 end
