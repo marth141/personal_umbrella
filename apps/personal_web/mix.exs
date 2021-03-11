@@ -51,6 +51,7 @@ defmodule PersonalWeb.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
+      {:phoenix_markdown, "~> 1.0"}
     ]
   end
 
