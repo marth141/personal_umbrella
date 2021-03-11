@@ -74,5 +74,6 @@ defmodule PersonalWeb.Router do
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
     get "/users/confirm/:token", UserConfirmationController, :confirm
+    resources "/about", AboutController, only: [:index]
   end
 end
